@@ -1,0 +1,33 @@
+@startuml
+
+abstract Pizza {
+    +{abstract} prepare():void
+    +bake():void
+    +cut():void
+    +box():void
+}
+
+class ChessPizza{
+    +prepare():void
+}
+
+class GreekPizza{
+    +prepare():void
+}
+
+Pizza <|-- ChessPizza
+Pizza <|-- GreekPizza
+
+class OrderPizza{
+    +OrderPizza():Pizza
+    -getType():String
+}
+
+Pizza <.. OrderPizza
+ChessPizza <.. OrderPizza
+GreekPizza <.. OrderPizza
+
+class PizzaStore{}
+
+OrderPizza <.. PizzaStore
+@enduml

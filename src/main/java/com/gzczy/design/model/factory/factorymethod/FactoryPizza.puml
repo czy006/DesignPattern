@@ -1,0 +1,55 @@
+@startuml
+
+abstract Pizza {
+    +{abstract} prepare():void
+    +bake():void
+    +cut():void
+    +box():void
+}
+
+class BJChessPizza{
+    +prepare():void
+}
+
+class BJPepperPizza{
+    +prepare():void
+}
+
+class LDChessPizza{
+    +prepare():void
+}
+
+class LDPepperPizza{
+    +prepare():void
+}
+
+Pizza <|-- BJChessPizza
+Pizza <|-- BJPepperPizza
+Pizza <|-- LDChessPizza
+Pizza <|-- LDPepperPizza
+
+class BJOrderPizza{
+    +CreatePizza():Pizza
+}
+
+class LDOrderPizza{
+    +CreatePizza():Pizza
+}
+
+BJChessPizza <.. BJOrderPizza
+BJPepperPizza <.. BJOrderPizza
+LDChessPizza <.. LDOrderPizza
+LDPepperPizza <.. LDOrderPizza
+
+abstract OrderPizza{
+    +{abstract} CreatePizza():Pizza
+    +OrderPizza()
+    - getType():String
+}
+
+BJOrderPizza --|> OrderPizza
+LDOrderPizza --|> OrderPizza
+
+PizzaStore ..> OrderPizza
+
+@enduml
