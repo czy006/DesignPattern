@@ -1,0 +1,31 @@
+@startuml
+
+abstract AbstractHouse {
+    +{abstract} buildBasic():void
+    +{abstract} buildWalls():void
+    +{abstract} roofed():void
+    +build():void
+}
+
+class CommonHouse{
+    +buildBasic():void
+    +buildWalls():void
+    +roofed():void
+}
+
+class HighBuilding{
+    +buildBasic():void
+    +buildWalls():void
+    +roofed():void
+}
+
+class Client{
+}
+
+Client ..> HighBuilding
+Client ..> CommonHouse
+
+CommonHouse --|> AbstractHouse
+HighBuilding --|> AbstractHouse
+
+@enduml

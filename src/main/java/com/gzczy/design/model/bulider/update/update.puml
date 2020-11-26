@@ -1,0 +1,44 @@
+@startuml
+
+abstract HouseBuilder {
+    -House:house = new House()
+    +{abstract} buildBasic():void
+    +{abstract} buildWalls():void
+    +{abstract} roofed():void
+    +build():House
+}
+
+House --> HouseBuilder
+HouseBuilder --> HouseDirector
+
+class HouseDirector{
+    -HouseBuilder:houseBuilder
+}
+
+
+class CommonHouse{
+    +buildBasic():void
+    +buildWalls():void
+    +roofed():void
+}
+
+class HighBuilding{
+    +buildBasic():void
+    +buildWalls():void
+    +roofed():void
+}
+
+class Client{
+}
+
+class House{}
+
+Client ..> HighBuilding
+Client ..> CommonHouse
+
+Client ..> HouseDirector
+
+CommonHouse --|> HouseBuilder
+HighBuilding --|> HouseBuilder
+
+@enduml
