@@ -1,0 +1,20 @@
+interface TestInterface{
+	+m1():void
+	+m2():void
+	+m3():void
+	+m4():void
+}
+
+abstract AbsAdapter{
+	+m1():void
+	+m2():void
+	+m3():void
+	+m4():void
+}
+
+class Client{
+	
+}
+
+AbsAdapter ..|> TestInterface
+Client ..>AbsAdapter
